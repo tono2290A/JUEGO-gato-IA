@@ -1,0 +1,292 @@
+/* =====================================================
+   ESTILO.CSS
+===================================================== */
+
+body{
+
+    background:#020617;
+
+    color:white;
+
+    font-family:Arial;
+
+    text-align:center;
+
+    margin:0;
+
+    overflow:hidden;
+}
+
+/* =====================================================
+   TITULO
+===================================================== */
+
+h1{
+
+    margin-top:20px;
+
+    font-size:50px;
+
+    color:cyan;
+
+    text-shadow:
+    0 0 10px cyan,
+    0 0 20px cyan,
+    0 0 40px cyan;
+}
+
+/* =====================================================
+   TEXTO
+===================================================== */
+
+#status{
+
+    margin:20px;
+
+    font-size:28px;
+}
+
+/* =====================================================
+   TABLERO
+===================================================== */
+
+.board{
+
+    width:340px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,100px);
+
+    gap:15px;
+
+    margin-top:40px;
+}
+
+/* =====================================================
+   CELDAS
+===================================================== */
+
+.cell{
+
+    width:100px;
+
+    height:100px;
+
+    background:#111827;
+
+    border:3px solid cyan;
+
+    border-radius:15px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:60px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.2s;
+
+    box-shadow:
+    0 0 10px cyan,
+    0 0 20px cyan;
+}
+
+/* =====================================================
+   HOVER
+===================================================== */
+
+.cell:hover{
+
+    transform:scale(1.08);
+
+    background:#1e293b;
+}
+
+/* =====================================================
+   BOTONES
+===================================================== */
+
+button{
+
+    margin-top:35px;
+
+    padding:15px 30px;
+
+    background:cyan;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.2s;
+
+    color:black;
+
+    box-shadow:
+    0 0 10px cyan,
+    0 0 20px cyan;
+}
+
+button:hover{
+
+    transform:scale(1.08);
+}
+
+/* =====================================================
+   GANADOR
+===================================================== */
+
+.winner{
+
+    background:#22c55e !important;
+
+    box-shadow:
+    0 0 20px #22c55e,
+    0 0 40px #22c55e !important;
+}
+
+/* =====================================================
+   FACIL
+===================================================== */
+
+.easy-mode h1{
+
+    color:#22c55e;
+
+    text-shadow:
+    0 0 10px #22c55e,
+    0 0 20px #22c55e,
+    0 0 40px #22c55e;
+}
+
+.easy-mode .cell{
+
+    border-color:#22c55e;
+
+    box-shadow:
+    0 0 10px #22c55e,
+    0 0 20px #22c55e;
+}
+
+.easy-mode button{
+
+    background:#22c55e;
+}
+
+/* =====================================================
+   NORMAL
+===================================================== */
+
+.normal-mode h1{
+
+    color:cyan;
+}
+
+.normal-mode .cell{
+
+    border-color:cyan;
+}
+
+.normal-mode button{
+
+    background:cyan;
+}
+
+/* =====================================================
+   DIFICIL
+===================================================== */
+
+.hard-mode h1{
+
+    color:#ef4444;
+
+    text-shadow:
+    0 0 10px #ef4444,
+    0 0 20px #ef4444,
+    0 0 40px #ef4444;
+}
+
+.hard-mode .cell{
+
+    border-color:#ef4444;
+
+    box-shadow:
+    0 0 10px #ef4444,
+    0 0 20px #ef4444;
+}
+
+.hard-mode button{
+
+    background:#ef4444;
+}
+
+
+/* =====================================================
+   RESPONSIVE PARA CELULAR
+   ===================================================== */
+
+@media(max-width:600px){
+
+    body{
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:center;
+    }
+
+    h1{
+
+        font-size:35px;
+    }
+
+    #status{
+
+        font-size:22px;
+    }
+
+    .board{
+
+        width:270px;
+
+        display:grid;
+
+        grid-template-columns:repeat(3,80px);
+
+        gap:10px;
+
+        justify-content:center;
+    }
+
+    .cell{
+
+        width:80px;
+
+        height:80px;
+
+        font-size:45px;
+    }
+
+    button{
+
+        font-size:16px;
+
+        padding:12px 20px;
+    }
+}

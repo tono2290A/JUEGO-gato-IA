@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gato IA</title>
+
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+    <h1>GATO IA</h1>
+
+    <div id="status">Tu turno</div>
+
+    <div class="board" id="board"></div>
+
+    <button onclick="restartGame()">REINICIAR</button>
+
+    <!-- SONIDOS -->
+
+    <audio id="click" src="sonidos/click.mp3"></audio>
+
+    <audio id="ganar" src="sonidos/Ganar.mp3"></audio>
+
+    <audio id="perder" src="sonidos/Perder.mp3"></audio>
+
+    <audio id="empate" src="sonidos/empate.mp3"></audio>
+
+    <script src="game.js"></script>
+
+</body>
+</html>
