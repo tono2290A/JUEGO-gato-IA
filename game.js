@@ -163,7 +163,7 @@ function playerMove(e){
         "¡GANASTE!";
 
         document.getElementById(
-        "Ganar").play();
+        "ganar").play();
 
         highlightWinner(winnerCombo);
 
@@ -180,7 +180,7 @@ function playerMove(e){
         "EMPATE";
 
         document.getElementById(
-        "Empate").play();
+        "empate").play();
 
         gameOver = true;
 
@@ -270,7 +270,7 @@ function aiMove(){
         "LA IA GANA";
 
         document.getElementById(
-        "Perder").play();
+        "perder").play();
 
         highlightWinner(winnerCombo);
 
@@ -287,7 +287,7 @@ function aiMove(){
         "EMPATE";
 
         document.getElementById(
-        "Empate").play();
+        "empate").play();
 
         gameOver = true;
 
