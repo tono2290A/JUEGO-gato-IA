@@ -180,7 +180,7 @@ function playerMove(e){
         "EMPATE";
 
         document.getElementById(
-        "empate").play();
+        "Empate").play();
 
         gameOver = true;
 
