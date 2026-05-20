@@ -1,33 +1,110 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
     <title>Gato IA</title>
 
-    <link rel="stylesheet" href="estilo.css">
+      <link rel="icon"
+    type="image/png"
+    href="logo.png">
+
+    <link rel="stylesheet"
+    href="estilo.css">
+
 </head>
+
 <body>
+
+    <!-- TITULO -->
 
     <h1>GATO IA</h1>
 
-    <div id="status">Tu turno</div>
+    <!-- ESTADO -->
 
-    <div class="board" id="board"></div>
+    <div id="status">
 
-    <button onclick="restartGame()">REINICIAR</button>
+        Tu turno
 
-    <!-- SONIDOS -->
+    </div>
 
-    <audio id="click" src="Sonidos/click.mp3"></audio>
+    <!-- =====================================================
+         MARCADOR
+    ===================================================== -->
 
-    <audio id="ganar" src="Sonidos/Ganar.mp3"></audio>
+    <div id="scoreboard">
 
-    <audio id="perder" src="Sonidos/Perder.mp3"></audio>
+        <p>
 
-    <audio id="empate" src="Sonidos/Empate.mp3"></audio>
+            Jugador:
+            <span id="playerScore">
+                0
+            </span>
+
+        </p>
+
+        <p>
+
+            IA:
+            <span id="aiScore">
+                0
+            </span>
+
+        </p>
+
+        <p>
+
+            Empates:
+            <span id="drawScore">
+                0
+            </span>
+
+        </p>
+
+    </div>
+
+    <!-- TABLERO -->
+
+    <div class="board"
+    id="board"></div>
+
+    <!-- BOTON -->
+
+    <button onclick="restartGame()">
+
+        REINICIAR
+
+    </button>
+
+    <!-- =====================================================
+         SONIDOS
+    ===================================================== -->
+
+    <audio id="click"
+    src="Sonidos/click.mp3">
+    </audio>
+
+    <audio id="ganar"
+    src="Sonidos/Ganar.mp3">
+    </audio>
+
+    <audio id="perder"
+    src="Sonidos/Perder.mp3">
+    </audio>
+
+    <audio id="empate"
+    src="Sonidos/Empate.mp3">
+    </audio>
+
+    <!-- JAVASCRIPT -->
 
     <script src="game.js"></script>
 
 </body>
+
 </html>

@@ -19,6 +19,16 @@ let ai = "O";
 
 let gameOver = false;
 
+/* =====================================================
+   MARCADOR
+===================================================== */
+
+let playerScore = 0;
+
+let aiScore = 0;
+
+let drawScore = 0;
+
 /* DIFICULTAD */
 
 let difficulty = "normal";
@@ -162,6 +172,14 @@ function playerMove(e){
         statusText.innerText =
         "¡GANASTE!";
 
+        /* MARCADOR */
+
+        playerScore++;
+
+        document.getElementById(
+        "playerScore").innerText =
+        playerScore;
+
         document.getElementById(
         "ganar").play();
 
@@ -178,6 +196,14 @@ function playerMove(e){
 
         statusText.innerText =
         "EMPATE";
+
+        /* MARCADOR */
+
+        drawScore++;
+
+        document.getElementById(
+        "drawScore").innerText =
+        drawScore;
 
         document.getElementById(
         "empate").play();
@@ -269,6 +295,14 @@ function aiMove(){
         statusText.innerText =
         "LA IA GANA";
 
+        /* MARCADOR */
+
+        aiScore++;
+
+        document.getElementById(
+        "aiScore").innerText =
+        aiScore;
+
         document.getElementById(
         "perder").play();
 
@@ -285,6 +319,14 @@ function aiMove(){
 
         statusText.innerText =
         "EMPATE";
+
+        /* MARCADOR */
+
+        drawScore++;
+
+        document.getElementById(
+        "drawScore").innerText =
+        drawScore;
 
         document.getElementById(
         "empate").play();
