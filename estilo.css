@@ -4,7 +4,19 @@
 
 body{
 
-    background:#020617;
+    background:
+    linear-gradient(
+        135deg,
+        #020617,
+        #0f172a,
+        #111827,
+        #020617
+    );
+
+    background-size:400% 400%;
+
+    animation:
+    backgroundMove 15s ease infinite;
 
     color:white;
 
@@ -15,6 +27,132 @@ body{
     margin:0;
 
     overflow:hidden;
+
+    position:relative;
+}
+
+/* =====================================================
+   CAPA NEON
+===================================================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    pointer-events:none;
+
+    background:
+
+    radial-gradient(
+        circle at 20% 20%,
+        rgba(0,255,255,0.15),
+        transparent 25%
+    ),
+
+    radial-gradient(
+        circle at 80% 30%,
+        rgba(255,0,255,0.12),
+        transparent 25%
+    ),
+
+    radial-gradient(
+        circle at 50% 80%,
+        rgba(0,255,100,0.10),
+        transparent 25%
+    );
+
+    animation:
+    neonMove 10s infinite alternate;
+}
+
+/* =====================================================
+   PARTICULAS FONDO
+===================================================== */
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    pointer-events:none;
+
+    background-image:
+
+    radial-gradient(cyan 1px, transparent 1px);
+
+    background-size:50px 50px;
+
+    opacity:0.12;
+
+    animation:
+    particlesMove 25s linear infinite;
+}
+
+/* =====================================================
+   ANIMACIONES FONDO
+===================================================== */
+
+@keyframes backgroundMove{
+
+    0%{
+
+        background-position:0% 50%;
+    }
+
+    50%{
+
+        background-position:100% 50%;
+    }
+
+    100%{
+
+        background-position:0% 50%;
+    }
+}
+
+@keyframes neonMove{
+
+    0%{
+
+        transform:translateY(0px);
+    }
+
+    100%{
+
+        transform:translateY(-30px);
+    }
+}
+
+@keyframes particlesMove{
+
+    from{
+
+        transform:translateY(0px);
+    }
+
+    to{
+
+        transform:translateY(-200px);
+    }
 }
 
 /* =====================================================
@@ -194,17 +332,241 @@ button:hover{
 }
 
 /* =====================================================
+   PARTICULAS CLICK
+===================================================== */
+
+.particle{
+
+    position:absolute;
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:cyan;
+
+    box-shadow:
+    0 0 10px cyan,
+    0 0 20px cyan,
+    0 0 30px cyan;
+
+    animation:
+    particleExplosion 0.8s ease-out forwards;
+}
+
+@keyframes particleExplosion{
+
+    0%{
+
+        transform:
+        scale(1)
+        translate(0,0);
+
+        opacity:1;
+    }
+
+    100%{
+
+        transform:
+        scale(0)
+        translate(
+            var(--x),
+            var(--y)
+        );
+
+        opacity:0;
+    }
+}
+
+/* =====================================================
+   ANIMACION VICTORIA
+===================================================== */
+
+.victory-animation{
+
+    animation:
+    victoryZoom 1s infinite;
+}
+
+@keyframes victoryZoom{
+
+    0%{
+
+        transform:scale(1);
+    }
+
+    50%{
+
+        transform:scale(1.05);
+    }
+
+    100%{
+
+        transform:scale(1);
+    }
+}
+
+/* =====================================================
+   TITULO GANADOR
+===================================================== */
+
+.victory-title{
+
+    animation:
+    titleGlow 1s infinite alternate;
+}
+
+@keyframes titleGlow{
+
+    from{
+
+        text-shadow:
+        0 0 10px #22c55e,
+        0 0 20px #22c55e;
+    }
+
+    to{
+
+        text-shadow:
+        0 0 20px #22c55e,
+        0 0 40px #22c55e,
+        0 0 60px #22c55e;
+    }
+}
+
+/* =====================================================
+   POPUP
+===================================================== */
+
+.popup{
+
+    position:fixed;
+
+    top:50%;
+
+    left:50%;
+
+    transform:
+    translate(-50%,-50%)
+    scale(0);
+
+    background:#111827;
+
+    border:4px solid cyan;
+
+    border-radius:25px;
+
+    padding:40px;
+
+    z-index:9999;
+
+    min-width:320px;
+
+    box-shadow:
+    0 0 20px cyan,
+    0 0 40px cyan,
+    0 0 80px cyan;
+
+    animation:
+    popupShow 0.5s forwards;
+}
+
+.popup h2{
+
+    font-size:40px;
+
+    margin:0;
+
+    color:cyan;
+
+    text-shadow:
+    0 0 10px cyan,
+    0 0 20px cyan;
+}
+
+.popup p{
+
+    margin-top:15px;
+
+    font-size:22px;
+}
+
+/* =====================================================
+   ANIMACION POPUP
+===================================================== */
+
+@keyframes popupShow{
+
+    0%{
+
+        transform:
+        translate(-50%,-50%)
+        scale(0);
+
+        opacity:0;
+    }
+
+    100%{
+
+        transform:
+        translate(-50%,-50%)
+        scale(1);
+
+        opacity:1;
+    }
+}
+
+/* =====================================================
+   OVERLAY
+===================================================== */
+
+.popup-overlay{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:
+    rgba(0,0,0,0.6);
+
+    backdrop-filter:blur(5px);
+
+    z-index:9998;
+
+    animation:
+    fadeOverlay 0.5s;
+}
+
+@keyframes fadeOverlay{
+
+    from{
+
+        opacity:0;
+    }
+
+    to{
+
+        opacity:1;
+    }
+}
+
+/* =====================================================
    FACIL
 ===================================================== */
 
 .easy-mode h1{
 
     color:#22c55e;
-
-    text-shadow:
-    0 0 10px #22c55e,
-    0 0 20px #22c55e,
-    0 0 40px #22c55e;
 }
 
 .easy-mode .cell{
@@ -219,12 +581,6 @@ button:hover{
 .easy-mode button{
 
     background:#22c55e;
-}
-
-.easy-mode #scoreboard p{
-
-    box-shadow:
-    0 0 10px #22c55e;
 }
 
 /* =====================================================
@@ -246,12 +602,6 @@ button:hover{
     background:cyan;
 }
 
-.normal-mode #scoreboard p{
-
-    box-shadow:
-    0 0 10px cyan;
-}
-
 /* =====================================================
    DIFICIL
 ===================================================== */
@@ -259,11 +609,6 @@ button:hover{
 .hard-mode h1{
 
     color:#ef4444;
-
-    text-shadow:
-    0 0 10px #ef4444,
-    0 0 20px #ef4444,
-    0 0 40px #ef4444;
 }
 
 .hard-mode .cell{
@@ -280,14 +625,8 @@ button:hover{
     background:#ef4444;
 }
 
-.hard-mode #scoreboard p{
-
-    box-shadow:
-    0 0 10px #ef4444;
-}
-
 /* =====================================================
-   RESPONSIVE PARA CELULAR
+   RESPONSIVE
 ===================================================== */
 
 @media(max-width:600px){
@@ -317,7 +656,8 @@ button:hover{
 
         display:grid;
 
-        grid-template-columns:repeat(3,80px);
+        grid-template-columns:
+        repeat(3,80px);
 
         gap:10px;
 
@@ -350,5 +690,20 @@ button:hover{
         font-size:16px;
 
         padding:8px 14px;
+    }
+
+    .popup{
+
+        width:80%;
+    }
+
+    .popup h2{
+
+        font-size:28px;
+    }
+
+    .popup p{
+
+        font-size:18px;
     }
 }

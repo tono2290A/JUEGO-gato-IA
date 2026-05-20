@@ -29,7 +29,9 @@ let aiScore = 0;
 
 let drawScore = 0;
 
-/* DIFICULTAD */
+/* =====================================================
+   DIFICULTAD
+===================================================== */
 
 let difficulty = "normal";
 
@@ -50,6 +52,8 @@ const wins = [
     [0,4,8],
     [2,4,6]
 ];
+
+
 
 /* =====================================================
    MENU DIFICULTAD
@@ -80,7 +84,10 @@ function createDifficultyMenu(){
 
     `;
 
-    document.body.insertBefore(menu, board);
+    document.body.insertBefore(
+        menu,
+        board
+    );
 }
 
 /* =====================================================
@@ -152,6 +159,10 @@ function playerMove(e){
     document.getElementById(
     "click").play();
 
+    createParticles(
+        e.target
+    );
+
     let index =
     e.target.dataset.index;
 
@@ -183,7 +194,17 @@ function playerMove(e){
         document.getElementById(
         "ganar").play();
 
-        highlightWinner(winnerCombo);
+        highlightWinner(
+        winnerCombo);
+
+        showPopup(
+        "🏆 GANASTE",
+        "Has derrotado a la IA"
+        );
+
+        document.body.classList.add(
+        "victory-animation"
+        );
 
         gameOver = true;
 
@@ -197,8 +218,6 @@ function playerMove(e){
         statusText.innerText =
         "EMPATE";
 
-        /* MARCADOR */
-
         drawScore++;
 
         document.getElementById(
@@ -207,6 +226,11 @@ function playerMove(e){
 
         document.getElementById(
         "empate").play();
+
+        showPopup(
+        "⚡ EMPATE",
+        "Nadie ganó esta ronda"
+        );
 
         gameOver = true;
 
@@ -295,8 +319,6 @@ function aiMove(){
         statusText.innerText =
         "LA IA GANA";
 
-        /* MARCADOR */
-
         aiScore++;
 
         document.getElementById(
@@ -306,7 +328,13 @@ function aiMove(){
         document.getElementById(
         "perder").play();
 
-        highlightWinner(winnerCombo);
+        highlightWinner(
+        winnerCombo);
+
+        showPopup(
+        "🤖 IA GANA",
+        "La IA fue más inteligente"
+        );
 
         gameOver = true;
 
@@ -320,8 +348,6 @@ function aiMove(){
         statusText.innerText =
         "EMPATE";
 
-        /* MARCADOR */
-
         drawScore++;
 
         document.getElementById(
@@ -330,6 +356,11 @@ function aiMove(){
 
         document.getElementById(
         "empate").play();
+
+        showPopup(
+        "⚡ EMPATE",
+        "Nadie ganó esta ronda"
+        );
 
         gameOver = true;
 
@@ -521,6 +552,10 @@ function restartGame(){
     statusText.innerText =
     "Tu turno";
 
+    document.body.classList.remove(
+    "victory-animation"
+    );
+
     cells.forEach(cell => {
 
         cell.innerText = "";
@@ -528,4 +563,95 @@ function restartGame(){
         cell.classList.remove(
         "winner");
     });
+}
+
+/* =====================================================
+   POPUP RESULTADO
+===================================================== */
+
+function showPopup(title,message){
+
+    const overlay =
+    document.createElement("div");
+
+    overlay.classList.add(
+    "popup-overlay"
+    );
+
+    document.body.appendChild(
+    overlay
+    );
+
+    const popup =
+    document.createElement("div");
+
+    popup.classList.add(
+    "popup"
+    );
+
+    popup.innerHTML = `
+
+        <h2>${title}</h2>
+
+        <p>${message}</p>
+
+    `;
+
+    document.body.appendChild(
+    popup
+    );
+
+    setTimeout(() => {
+
+        popup.remove();
+
+        overlay.remove();
+
+    },2500);
+}
+
+/* =====================================================
+   PARTICULAS CLICK
+===================================================== */
+
+function createParticles(element){
+
+    const rect =
+    element.getBoundingClientRect();
+
+    for(let i=0;i<12;i++){
+
+        const particle =
+        document.createElement("div");
+
+        particle.classList.add(
+        "particle"
+        );
+
+        particle.style.left =
+        rect.left + rect.width/2 + "px";
+
+        particle.style.top =
+        rect.top + rect.height/2 + "px";
+
+        particle.style.setProperty(
+        "--x",
+        (Math.random()*200-100)+"px"
+        );
+
+        particle.style.setProperty(
+        "--y",
+        (Math.random()*200-100)+"px"
+        );
+
+        document.body.appendChild(
+        particle
+        );
+
+        setTimeout(() => {
+
+            particle.remove();
+
+        },800);
+    }
 }
