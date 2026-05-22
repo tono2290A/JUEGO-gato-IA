@@ -198,7 +198,7 @@ function playerMove(e){
         winnerCombo);
 
         showPopup(
-        "🏆 GANASTE",
+        "GANASTE",
         "Has derrotado a la IA"
         );
 
@@ -228,7 +228,7 @@ function playerMove(e){
         "empate").play();
 
         showPopup(
-        "⚡ EMPATE",
+        "EMPATE",
         "Nadie ganó esta ronda"
         );
 
@@ -332,7 +332,7 @@ function aiMove(){
         winnerCombo);
 
         showPopup(
-        "🤖 IA GANA",
+        "IA GANA",
         "La IA fue más inteligente"
         );
 
